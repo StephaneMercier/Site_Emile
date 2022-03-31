@@ -1,18 +1,50 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="main">
+    <div class="header">
+      <h1 class="header-title">Créations sur bois</h1>
+      <h2 class="header-subtitle">Fait main, sur-mesure pour particuliers</h2>
+    </div>
+    <h2 class="card-title">Mes Créations :</h2>
+    <div class="card-container">
+      <div class="product-card">
+        <ProductCard
+          v-for="product in products"
+          :key="product.id"
+          :products="product.name"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import ProductCard from "../components/ProductCard.vue";
 export default {
-  name: "Home",
-  components: {
-    HelloWorld,
+  components: { ProductCard },
+  data() {
+    return {
+      products: [
+        {
+          id: 1,
+          name: "Décapsuleur Bois",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        },
+        {
+          id: 2,
+          name: `Enseigne "WALK"`,
+          description: "Lorem ipsum dolor sit amet, consectetur",
+        },
+      ],
+    };
   },
 };
 </script>
+
+<style scoped>
+.main {
+  background-color: #272f5c;
+  min-height: 100vh;
+  color: #d96d0f;
+}
+</style>
